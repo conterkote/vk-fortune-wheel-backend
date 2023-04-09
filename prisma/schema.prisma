@@ -12,17 +12,26 @@ datasource db {
 
 model Wheel {
   id      Int @id @default(1)
-  balance Int @default(1000)
   jackpot Int @default(10000)
 }
 
 model Winners {
-  id    String @id @default(uuid())
-  name  String
-  amout String
+  id      String @id @default(uuid())
+  User    Users  @relation(fields: [usersId], references: [id])
+  name    String
+  amout   String
+  usersId String
 }
 
 model Prizes {
   id    String @id @default(uuid())
   amout String @unique
+}
+
+model Users {
+  id         String    @id @unique
+  photo_200  String
+  first_name String
+  balance    Int       @default(1000)
+  Winners    Winners[]
 }
