@@ -1,0 +1,28 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Wheel {
+  id      Int @id @default(1)
+  balance Int @default(1000)
+  jackpot Int @default(10000)
+}
+
+model Winners {
+  id    String @id @default(uuid())
+  name  String
+  amout String
+}
+
+model Prizes {
+  id    String @id @default(uuid())
+  amout String @unique
+}
