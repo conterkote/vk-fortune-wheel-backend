@@ -1,7 +1,7 @@
 import {Router} from "express";
-import wheelRouter from "./routes/wheel.route";
-import winnersRouter from "./routes/winners.route";
-import usersRouter from "./routes/users.route";
+import wheelRouter from "./routes/wheel.route.js";
+import winnersRouter from "./routes/winners.route.js";
+import usersRouter from "./routes/users.route.js";
 
 const v1 = Router()
 

@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "nodemon dist/index.js",
     "ts-watch": "tsc --watch",
-    "prisma-migrate": "npx prisma migrate dev"
+    "prisma-migrate": "npx prisma migrate dev",
+    "build" : "tsc && npx prisma migrate dev --name init && node dist/index.js"
   },
   "keywords": [],
   "author": "",

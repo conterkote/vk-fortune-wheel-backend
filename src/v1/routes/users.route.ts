@@ -1,6 +1,6 @@
 import express from "express";
-import usersController from "../controllers/users.controller";
-import {vkDataValidator} from "../validators/vkDataValidator";
+import usersController from "../controllers/users.controller.js";
+import {vkDataValidator} from "../validators/vkDataValidator.js";
 
 const usersRouter = express.Router();
 

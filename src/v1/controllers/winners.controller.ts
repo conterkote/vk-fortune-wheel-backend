@@ -1,6 +1,6 @@
 import {Request, Response} from "express";
-import prisma from "../../prisma/prisma";
-import {IWinner} from "../../models";
+import prisma from "../../prisma/prisma.js";
+import {IWinner} from "../../models.js";
 
 class WinnersController {
   async getWinners(req : Request, res : Response) {

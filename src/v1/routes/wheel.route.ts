@@ -1,6 +1,6 @@
 import {Router} from "express";
-import wheelController from "../controllers/wheel.controller";
-import {vkDataValidator} from "../validators/vkDataValidator";
+import wheelController from "../controllers/wheel.controller.js";
+import {vkDataValidator} from "../validators/vkDataValidator.js";
 
 const wheelRouter = Router()
   wheelRouter.get('/jackpot', wheelController.getJackpot)

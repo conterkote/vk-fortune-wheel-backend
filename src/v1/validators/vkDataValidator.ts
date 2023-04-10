@@ -1,6 +1,6 @@
 import {NextFunction, Request, Response} from "express";
-import {IVkUserData} from "../../models";
-import CustomError from "../errors/CustomError";
+import {IVkUserData} from "../../models.js";
+import CustomError from "../errors/CustomError.js";
 
 // {
 //   "photo_200" : "https://sun6-20.userapi.com/s/v1/ig2/GZ_keeQdwTJePj",

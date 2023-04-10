@@ -1,7 +1,7 @@
 import {Request, Response} from "express";
-import prisma from "../../prisma/prisma";
-import {IVkUserData} from "../../models";
-import CustomError from "../errors/CustomError";
+import prisma from "../../prisma/prisma.js";
+import {IVkUserData} from "../../models.js";
+import CustomError from "../errors/CustomError.js";
 
 class UsersController {
   async authorize(req: Request<{}, {}, IVkUserData>, res: Response) {

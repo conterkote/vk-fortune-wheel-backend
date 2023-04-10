@@ -1,5 +1,5 @@
 import express, {NextFunction, Request, Response} from "express"
-import v1 from "./v1/index"
+import v1 from "./v1/index.js"
 import WebSocketType from "ws";
 import cors from "cors"
 

@@ -1,5 +1,5 @@
 import {Router} from "express";
-import winnersController from "../controllers/winners.controller";
+import winnersController from "../controllers/winners.controller.js";
 
 const winnersRouter = Router()
 

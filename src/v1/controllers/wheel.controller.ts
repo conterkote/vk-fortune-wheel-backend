@@ -1,9 +1,9 @@
 import {Response, Request} from "express";
-import {IVkUserData, IWinner} from "../../models";
-import {findDegrees} from "../functions/findDegrees";
-import {wsInstance} from "../../express";
+import {IVkUserData, IWinner} from "../../models.js";
+import {findDegrees} from "../functions/findDegrees.js";
+import {wsInstance} from "../../express.js";
 import WebSocket from "ws";
-import prisma from "../../prisma/prisma";
+import prisma from "../../prisma/prisma.js";
 
 class WheelController {
   async getJackpot(req: Request, res: Response) {

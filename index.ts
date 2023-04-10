@@ -1,6 +1,6 @@
-import app from "./src/express"
+import app from "./src/express.js"
 import env from "dotenv";
-import {prismaInit} from "./src/prisma/prisma";
+import {prismaInit} from "./src/prisma/prisma.js";
 
 env.config()
 
