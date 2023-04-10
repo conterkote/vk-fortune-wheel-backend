@@ -16,16 +16,16 @@ model Wheel {
 }
 
 model Winners {
-  id      String @id @default(uuid())
-  User    Users  @relation(fields: [usersId], references: [id])
-  name    String
-  amout   String
+  id      String   @id @default(uuid())
+  User    Users    @relation(fields: [usersId], references: [id])
+  amount  String
+  spin_at DateTime
   usersId String
 }
 
 model Prizes {
-  id    String @id @default(uuid())
-  amout String @unique
+  id     String @id @default(uuid())
+  amount String @unique
 }
 
 model Users {

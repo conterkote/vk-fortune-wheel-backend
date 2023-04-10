@@ -28,3 +28,10 @@ export interface ICountry {
 export interface IDegreesData {
 
 }
+
+export interface IWinner {
+  first_name: string;
+  photo_200 : string;
+  amount : string
+  time : Date
+}

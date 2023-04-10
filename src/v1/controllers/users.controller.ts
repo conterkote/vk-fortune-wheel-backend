@@ -6,11 +6,6 @@ import CustomError from "../errors/CustomError";
 class UsersController {
   async authorize(req: Request<{}, {}, IVkUserData>, res: Response) {
     try {
-      const userData = {
-        id: req.body.id,
-        first_name: req.body.first_name,
-        photo_200: req.body.photo_200
-      }
       const data = await prisma.users.upsert({
         where: {
           id: req.body.id
@@ -32,7 +27,22 @@ class UsersController {
       return res.status(200).json(data)
     } catch (e : any) {
       const error = new CustomError(e.message, 500)
+      console.log(e)
       return res.status(error.code).json(e.message)
+    }
+  }
+  async getBalance(req: Request<{}, {}, IVkUserData>, res: Response) {
+    try {
+      const data = await prisma.users.findFirst({
+        where : {
+          id : req.body.id
+        }
+      })
+      if (data) {
+        res.status(200).json(data.balance)
+      }
+    } catch (e: any) {
+      res.status(e.code || 500).send(e)
     }
   }
 }

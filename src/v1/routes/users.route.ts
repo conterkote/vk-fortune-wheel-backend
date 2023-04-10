@@ -5,5 +5,6 @@ import {vkDataValidator} from "../validators/vkDataValidator";
 const usersRouter = express.Router();
 
 usersRouter.post('/authorize', vkDataValidator, usersController.authorize)
+usersRouter.post('/balance', vkDataValidator, usersController.authorize)
 
 export default usersRouter

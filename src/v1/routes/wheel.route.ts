@@ -4,6 +4,7 @@ import {vkDataValidator} from "../validators/vkDataValidator";
 
 const wheelRouter = Router()
   wheelRouter.get('/jackpot', wheelController.getJackpot)
-  wheelRouter.get('/prizes', wheelController.getPrizes)
   wheelRouter.post('/spin', vkDataValidator, wheelController.spinWheel)
+  // wheelRouter.get('/prizes', wheelController.getPrizes)
+
 export default wheelRouter

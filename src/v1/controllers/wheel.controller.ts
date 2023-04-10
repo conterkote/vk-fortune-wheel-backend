@@ -1,13 +1,11 @@
 import {Response, Request} from "express";
-import prisma from "../../prisma/prisma";
-import {IVkUserData} from "../../models";
+import {IVkUserData, IWinner} from "../../models";
 import {findDegrees} from "../functions/findDegrees";
+import {wsInstance} from "../../express";
+import WebSocket from "ws";
+import prisma from "../../prisma/prisma";
 
 class WheelController {
-  async getPrizes(req: Request, res: Response) {
-
-  }
-
   async getJackpot(req: Request, res: Response) {
     try {
       const data = await prisma.wheel.findFirst({where: {id: 1}})
@@ -38,10 +36,19 @@ class WheelController {
         },
         data: {}
       })
-      const prizes = await prisma.prizes.findMany()
+      const prizes =  [{amount: "Jackpot"},
+        {amount: "250"},
+        {amount: "400"},
+        {amount: "10"},
+        {amount: "100"},
+        {amount : "150"},
+        {amount : "200"},
+        {amount : "750"}]
+        // await prisma.prizes.findMany()
+      console.log(prizes);
       const prizeId = Math.floor(Math.random() * prizes.length)
 
-      let prize: string = prizes[prizeId].amout
+      let prize: string = prizes[prizeId].amount
       const prizeDegrees = findDegrees(prizes.length, prizeId)
       let preparedPrize: number = (prize === "Jackpot" ? wheelData.jackpot : Number.parseInt(prize)) - 100
 
@@ -72,17 +79,37 @@ class WheelController {
           }
         }
       })
+      console.log(prizeDegrees)
 
       const spinResponse = {
         ...updatedUserData,
         ...updatedWheelData,
+        amount : prizes[prizeId].amount,
         prizeDegrees : {...prizeDegrees}
       }
 
-      res.status(200).json(spinResponse)
+      await prisma.winners.create({
+        data : {
+          usersId : userData.id,
+          amount : prizes[prizeId].amount,
+          spin_at : new Date()
+        }
+      })
+
+      wsInstance.getWss().clients.forEach((client : WebSocket ) => {
+        const winnerData: IWinner = {
+          first_name : userData.first_name,
+          photo_200 : userData.photo_200,
+          amount : prizes[prizeId].amount,
+          time : new Date()
+        }
+        client.send(JSON.stringify(winnerData))
+      })
+
+      return res.status(200).json(spinResponse)
 
     } catch (e) {
-
+      console.log(e);
     }
   }
 }

@@ -9,14 +9,14 @@ async function prismaInit() {
   })
   await prisma.prizes.createMany({
     data : [
-      {amout : "250"},
-      {amout : "400"},
-      {amout : "10"},
-      {amout : "100"},
-      {amout : "150"},
-      {amout : "200"},
-      {amout : "750"},
-      {amout : "Jackpot"},
+      {amount : "250"},
+      {amount : "400"},
+      {amount : "10"},
+      {amount : "100"},
+      {amount : "150"},
+      {amount : "200"},
+      {amount : "750"},
+      {amount : "Jackpot"},
     ],
     skipDuplicates : true
   })
