@@ -1,6 +1,6 @@
 # vk-fortune-wheel-backend
 
-Frontend repository of this project:
+Frontend repository and more info about this project:
 https://github.com/conterkote/vk-fortune-wheel-frontend
 
 Features:
